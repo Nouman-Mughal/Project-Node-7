@@ -1,5 +1,5 @@
 
-import * as express from 'express';
+import {default as express} from 'express';
 const router=express.Router()
 //@description Login/landing page
 //@ actual route GET /
