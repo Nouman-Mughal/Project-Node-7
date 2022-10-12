@@ -2,10 +2,10 @@
   "name": "project-node-212",
   "version": "1.0.0",
   "description": "App to create public and private Stories",
-  "main": "app.js",
+  "main": "app.mjs",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node app",
-    "dev":" cross-env NODE_ENV=development nodemon app"
+    "start": "cross-env NODE_ENV=production node app.mjs",
+    "dev":" cross-env NODE_ENV=development nodemon app.mjs"
   },
   "author": "Noman-Ahmad",
   "license": "ISC",
