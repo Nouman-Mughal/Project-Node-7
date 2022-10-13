@@ -4,8 +4,10 @@ import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import {default as passport} from 'passport';
+import * as mongoose from 'mongoose';
 import passportConfig from './config/passport.mjs';
 import session from 'express-session'
+import MongoStore from 'connect-mongo';
 
 import {connectDB} from './config/db.mjs';
 import * as dotenv from 'dotenv';
@@ -14,6 +16,7 @@ import morgan  from 'morgan';
 import router from './routes/index.mjs';
 import authrouter from './routes/auth.mjs'
 import {engine} from 'express-handlebars';
+
 
 //Load config
 dotenv.config({path: './config/config.env'})
@@ -32,12 +35,17 @@ app.set('view engine', '.hbs');
 
 connectDB()
 //sessions
+// const MongoStore = connectMongo(session);
+//to store the session in the database
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl:process.env.MONGO_URI ,
+        touchAfter: 24 * 3600 // time period in seconds
     // cookie: { secure: true } not gonna work with http only works with https.
-  }))
+  })}))
 //passport middleware
 app.use(passport.initialize())
 app.use(passport.session())

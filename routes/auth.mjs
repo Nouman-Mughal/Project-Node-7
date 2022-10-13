@@ -15,5 +15,19 @@ authrouter.get('/google/callback',passport.authenticate('google',{failureRedirec
     res.redirect('/dashboard')
 }
 )
+//@description logout user
+//router /auth/logout
+// authrouter.get('/logout',(req,res)=>{
+//     //due to passport middleware once we have login middleware we also have logout method
+//     req.logout()
+//     res.redirect('/')
+// })
+//req.logout has benn modified to be asyncronous so callback works in this method only.
+authrouter.get('/logout', function(req, res, next) {
+    req.logout(function(err) {
+      if (err) { return next(err); }
+      res.redirect('/');
+    });
+  });
 
 export default authrouter;

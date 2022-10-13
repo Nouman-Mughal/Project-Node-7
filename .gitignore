@@ -2,3 +2,4 @@
 /.vscode
 /config/config.env
 /config/passport.mjs
+/config/db.mjs
