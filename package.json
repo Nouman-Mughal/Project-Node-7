@@ -5,11 +5,12 @@
   "main": "app.mjs",
   "scripts": {
     "start": "cross-env NODE_ENV=production node app.mjs",
-    "dev":" cross-env NODE_ENV=development nodemon app.mjs"
+    "dev": " cross-env NODE_ENV=development nodemon app.mjs"
   },
   "author": "Noman-Ahmad",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
